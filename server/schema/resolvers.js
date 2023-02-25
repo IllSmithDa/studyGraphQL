@@ -33,7 +33,34 @@ const resolvers = {
       return _.filter(MovieList, (movie) => movie.yearOfPublication >= 2000  && 
       movie.yearOfPublication <= 2010)
     }
-  }
+  },
+  Mutation: {
+    createUser:(parent, args) => {
+      const user = args.input
+      console.log(user);
+      // here is where you would add user to database
+      const newId = UserList[UserList.length - 1].id + 1;
+      user.id = newId;
+      UserList.push(user);
+      return user;
+    },
+    updateUser: (parent, args) => {
+      const { id, newUsername } = args.input;
+      let updatedUser;
+      UserList.forEach((user) => {
+        if(user.id === Number(id)) {
+          user.username = newUsername;
+          updatedUser = user;
+        }
+      })
+      return updatedUser;
+    },
+    deleteUser: (parent, args) => {
+      const { id } = args;
+      _.remove(UserList, (user) =>  user.id === Number(id));
+      return null;
+    },
+  } 
 }
 
 module.exports = { resolvers }

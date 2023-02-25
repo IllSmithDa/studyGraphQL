@@ -95,4 +95,70 @@
 
       c. Must include an array and must of the type Video
 
-# Note that types are also known as scalars 
+   4. Note that types are also known as scalars 
+
+# Enums 
+
+  1. Can be used to represent a dropdown selection field or when you want a
+     field to set to a particular set of values 
+
+     e.g 
+     enum Nationality {
+      CANADA
+      UNITED STATES
+      BRAZIL
+      CHINA
+      CHILE
+      MEXICO
+      FRANCE
+     }
+    
+      a. created a enum for Nationality that limits possible value to the values mentioned here 
+
+    type User {
+      id: ID!
+      name: String!
+      nationality: Nationality
+    }
+
+      b. newly created Enum now exists as a type which can be used for fields 
+
+    e.g
+    qeury getAllUsers {
+      users {
+        id
+        nationality
+        friends {
+          name
+        }
+      }
+    }
+
+      c. query which also return a list of friends whcih is type User and its field
+      'name' along with the other mentioned properties including id and nationality
+
+  2. Note that be careful when making enums required because they are case
+     sensitive and if the argument passed does not match exactly, it will result
+     in a error
+
+     e.g nationality: Nationality!
+
+      a. nationality set to required 
+
+  3. Setting nationality to have a default value is a good work around if you
+     want to ensure that it is not null 
+
+    e.g
+
+    enum Nationality {
+      CANADA
+      UNITED STATES
+      BRAZIL
+     }
+
+    input CreateUserInput {
+      name: String!
+      username: String!
+      nationality: Nationality = BRAZIL
+    }
+      a. nationality is default to BRAZIL if it not defined 

@@ -12,7 +12,7 @@
 
     a. There is a built in sandbox which you can test your queires 
 
-    e.b 
+    e.g
     qeury getAllUsers {
       users {
         id
@@ -77,13 +77,8 @@
       users: () => {
         return UserList;
       },
-      // args represent the arguments passed by the client such as user id. It is
-      // an object and should be treated as such
       user: (parent, args) => {
         const { id } = args;
-        // mocking a database get functionality using lodash and userId  
-        // set id type to number because the database FakeData has this id value
-        // as a number
         const user = _.find(UserList, { id: Number(id) });
         return user;
       },
@@ -122,17 +117,39 @@
       }
     }
     
-    b. new Query specific for User is created and used to get the field that is of another Type
-    We can now query for favorite movies in the front end. 
+    b. new Query specific for User is created and used to get the field that is of another Type. We can now query for favorite movies in the front end. 
+
+  4. In the sandbox, we can create a operation to fetch the specific user using
+     this syntax
 
     e.g
-    user(id: $userId) {
-      name
-      age
-      favoritemovies {
-        name
-        isInTheaters
-      }      
+    query findUser($userId: ID!) {
+      user(id: $userId) {
+        friends {
+          name  
+        }
+        nationality
+      }
     }
 
-    
+    a. make sure to include the userId variable in the bottom section of the apollo-server query sandbox 
+
+    e.g 
+    {
+      "userId": 1
+    }
+
+      a. setting userId to 1
+
+    e.g
+    qeury getAllUsers {
+      users {
+        id
+        nationality
+        friends {
+          name
+        }
+      }
+    }
+      a. This query in the sandbox needs to variables because it is simply retrieve a list of all users so no argument such as 'Id' is required
+
