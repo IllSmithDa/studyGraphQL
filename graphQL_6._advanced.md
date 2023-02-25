@@ -38,18 +38,3 @@
    c. query which also return a list of friends whcih is type User and its field
   'name' along with the other mentioned properties including id and nationality
 
-# Inlcuding other types in Custom Types 
-
-  e.g.
-  type User {
-    id: ID
-    name: String!
-    favoriteMovies: [Movie]
-  }
-
-  type Movie {
-    id: ID!
-    name: String!
-    isInTheaters: Boolean!
-  }
-

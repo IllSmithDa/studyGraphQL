@@ -19,7 +19,7 @@
       country(code: ID): Country
     }
 
-      a. This schema on the server 'country' require a argument 'code' with type ID and 
+      a. This 'country' in Query require a argument 'code' with type ID and 
       returns type Country which is a special type defined with fields with basic types
 
     {
