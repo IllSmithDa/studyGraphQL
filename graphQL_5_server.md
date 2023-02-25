@@ -123,7 +123,7 @@
     }
     
     b. new Query specific for User is created and used to get the field that is of another Type
-    We can now query for favorite movies in the front end 
+    We can now query for favorite movies in the front end. 
 
     e.g
     user(id: $userId) {
