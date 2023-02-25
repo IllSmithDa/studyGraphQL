@@ -25,8 +25,8 @@
 
 # Differences between GraphQL and Rest 
 
-  1. Only one end point is created and front end developers do not need to track
-     and memorize all the different endpoints of the server
+  1. Only one end point is created in GraphQL and front end developers do not need to track
+     and memorize all the different endpoints of the server such as in Rest APIs
 
   2. GraphQL will not over or under fetch data but will retrieve the exact
      fields that is required by the client. REST will require developers to
