@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import DisplayData from './DisplayData'
 
 function App() {
-
   return (
     <div>
+      <DisplayData />
     </div>
   )
 }
