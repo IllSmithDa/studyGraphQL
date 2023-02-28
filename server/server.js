@@ -11,7 +11,13 @@ const { resolvers } = require("./schema/resolvers");
 // configure apollo server by creating an instance of apollo server 
 // typeDefs represents all the different types and the all the graphql functions that
 // are written and ran are enclosed in a variable called resolvers
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ 
+  typeDefs, 
+  resolvers,
+  context: ({ req, res }) => {
+    return { res, req, token: "dafoijs#@", name: "Pedro"}
+  }
+});
 
 
 server

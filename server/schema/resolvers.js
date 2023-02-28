@@ -5,7 +5,8 @@ const { UserList, MovieList } = require("../FakeData");
 const _= require("lodash");
 const resolvers = {
   Query: {
-    users: () => {
+    users: (parent, args, context) => {
+      console.log(context.res);
       return UserList;
     },
     // args represent the arguments passed by the client such as user id. It is

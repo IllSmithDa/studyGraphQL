@@ -161,4 +161,64 @@
       username: String!
       nationality: Nationality = BRAZIL
     }
-      a. nationality is default to BRAZIL if it not defined 
+      a. nationality is default to BRAZIL if it not defined
+
+# Union types 
+
+   1. Similar to typscript, you can set multiple types for things like error
+      handling by using 'union' keyword 
+
+      e.g
+      type SuccessUsersResult {
+         users: [User!]!
+      }
+      type ErrorUsersResult {
+         message: String!
+      }
+      union UserResult = SuccessUsersResult | ErrorUsersResult
+
+         a. This will result either a list of type User or a error message 
+
+   2. Cosume the union type through a custom resolver function
+
+   e.g
+   const resolvers = {
+      UsersResult: {
+         __resolveType(obj) {
+            if (obj.users) {
+               return "SuccessUsersResult";
+            }
+            if (obj.message) {
+               return "ErrorUsersResult";
+            }
+            return null;
+         }
+      }
+   }
+   Query: {
+      users:() {
+         if(UserList) return { users: UserList };
+         return { message: "error: userlist not found"};
+      }
+   }
+      a. we now return an error or a userlist 
+
+   3. Query for users on the front end
+
+      e.g
+      query UserQuery {
+         users {
+            ...on SuccessUsersResult {
+               users {
+                  id
+                  name
+               }
+            }
+            ...on ErrorUsersResult {
+               message
+            }
+         }
+      }
+
+         a. Simply queries for userlist and return the list or the error message
+         we set up on type definition.

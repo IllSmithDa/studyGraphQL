@@ -72,8 +72,7 @@
 
   1. To query by name, id or whatever variable you need, you can use
      useLazyQuery to set up function name and the Query action
-     
-    a. https://stackoverflow.com/questions/68055994/apollo-react-why-cant-query-inside-useeffect-hook
+     https://stackoverflow.com/questions/68055994/apollo-react-why-cant-query-inside-useeffect-hook
 
     e.g
     const [fetchMovie, {data: movieData, error: movieErr}] = useLazyQuery(GET_MOVIE_BY_NAME)
@@ -89,3 +88,45 @@
     
     e.g 
     { varaibles: { movieName: searchMovie }} 
+
+# Mutli Query
+  1. GraphQL is very flexible in the types of data you cam return.
+
+    e.g
+    query ExmapleQuery {
+      users {
+        id
+        name
+      }
+      movies {
+        name
+      }
+    }
+
+      a. We query for both movies and users at separate entities at the same time 
+
+      b. will return a data structure with both a list of movie and a list of users under 
+      the data property
+
+      e.g.
+      {
+        "data": {
+          "users": [
+            {
+              "id": 1,
+              "name": "tyler"
+            }
+          ],
+          "movies": [
+            {
+              "id": 1,
+              "name": "Forrest Gump"
+            },
+            {
+              "id": 2,
+              "name": "Food Inc"
+            }
+          ]
+        }
+      }
+

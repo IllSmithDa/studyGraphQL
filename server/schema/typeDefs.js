@@ -36,7 +36,7 @@ const typeDefs = gql`
     movie(name: String!): Movie!
   }
 
-  input createUserInput {
+  input CreateUserInput {
     name: String!
     username: String!
     age: Int!
@@ -47,7 +47,7 @@ const typeDefs = gql`
     newUsername: String!
   }
   type Mutation {
-    createUser(input: createUserInput!): User
+    createUser(input: CreateUserInput!): User
     updateUser(input: UpdateUsernameInput!): User
     deleteUser(id: ID!): User
   }

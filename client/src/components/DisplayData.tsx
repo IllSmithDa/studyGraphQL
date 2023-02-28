@@ -1,5 +1,7 @@
-import { useQuery, gql, useLazyQuery } from '@apollo/client';
+import { useQuery, gql, useLazyQuery, OperationVariables, ApolloQueryResult } from '@apollo/client';
 import { useState } from 'react';
+import RemoveUser from './DeleteUser';
+import MutateData from './MutateData';
 
 interface User {
   id: number,
@@ -56,7 +58,7 @@ const GET_MOVIE_BY_NAME = gql`
 
 export default function DisplayData() {
   const [searchMovie, setSearchMovie] = useState("");
-  const { data, loading, error } = useQuery(QUERY_ALL_USERS);
+  const { data, loading, error, refetch: refetchUsers } = useQuery(QUERY_ALL_USERS);
   const { data: movieData, loading: loadingMovie, error: movieError } = useQuery(QUERY_ALL_MOVIES);
 
   const [fetchMovie, {data: movieSearchData, error: movieSearchErr}] = useLazyQuery(GET_MOVIE_BY_NAME)
@@ -117,11 +119,17 @@ export default function DisplayData() {
                 <h3>Name: {user.name}</h3>
                 <p>Username: {user.username}</p>
                 <p>Age: {user.age}</p>
+                <RemoveUser 
+                  userId={user.id}
+                  refetchUsers={refetchUsers}
+                />
               </div>
             )
           })
         }
       </div>
+      {/* pass in the refetchUsers function to be called by the child component */}
+      <MutateData refetchUsers={refetchUsers}/>
     </div>
   )
 }

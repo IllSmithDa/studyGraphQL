@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import DisplayData from './DisplayData'
+import DisplayData from './components/DisplayData'
 
 function App() {
   return (
