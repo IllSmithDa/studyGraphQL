@@ -23,7 +23,7 @@
       createUser(user: User!): User!
     }
 
-    a. uses the type User to pass in all the fields of user in a single object rather than listing each one as its own argument
+      a. uses the type User to pass in all the fields of user in a single object rather than listing each one as its own argument
   
   3. The most precise method for creating is to use an input because you can specify which fields you want to use for creating user
 
