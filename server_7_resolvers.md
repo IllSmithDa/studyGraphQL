@@ -1,4 +1,4 @@
-# Resolver mthods actually have up to four arguments 
+# Resolver methods actually have up to four arguments 
 
   e.g
   const resolvers =  {

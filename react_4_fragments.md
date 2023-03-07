@@ -10,15 +10,14 @@
 
   4. The fragement cannot be changed after it is set (immutability to the code)
 
-  e.g 
-
-  fragment GetAgeAndName on User {
-    age
-    name
-  }
-
-  query ExampleQuery {
-    users {
-      ...GetAgeAndName
+    e.g 
+    fragment GetAgeAndName on User {
+      age
+      name
     }
-  }
+  
+    query ExampleQuery {
+      users {
+        ...GetAgeAndName
+      }
+    }

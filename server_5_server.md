@@ -12,18 +12,18 @@
 
     a. There is a built in sandbox which you can test your queires 
 
-    e.g
-    qeury getAllUsers {
-      users {
-        id
-        name
+      e.g
+      qeury getAllUsers {
+        users {
+          id
+          name
+        }
       }
-    }
 
-    a. apollo server sandbox starts with 'query' keyword followed by name and then the 
-    Query route from the schema followed by the various fields you wish to return 
-
-    b. includes a built in error system that tells you exactly what went wrong
+        a. apollo server sandbox starts with 'query' keyword followed by name and then the 
+        Query route from the schema followed by the various fields you wish to return 
+    
+        b. includes a built in error system that tells you exactly what went wrong
 
 # Type Def
 
@@ -71,8 +71,7 @@
   2. You write resolvers to handle the action and logic of retrieving data and
      recieving argument to filter and find specific data
 
-     e.g
-
+    e.g
     Query: {
       users: () => {
         return UserList;
@@ -84,8 +83,8 @@
       },
     },
 
-    a. Two queries set up here with the first one simply returning a list of users 
-    and the second one returning a specific user base on matching 'id'
+      a. Two queries set up here with the first one simply returning a list of users 
+      and the second one returning a specific user base on matching 'id'
 
   3. Resolvers can be written for other types not just the generic Query which
      is important when we have other types in our type 
@@ -96,19 +95,21 @@
       name: String!
       favoriteMovies: [Movie]
     }
+
     type Movie {
       id: ID!
       name: String!
       yearOfPublication: Int!
     }
 
-    a. type User has a property 'favoriteMovies' which is set to a list of type 'Movie'
+      a. type User has a property 'favoriteMovies' which is set to a list of type 'Movie'
 
     Query {
       users: () => {
         return UserList;
       },
     },
+
     User: {
       // favorite movies
       favoriteMovies: () => {
@@ -117,7 +118,7 @@
       }
     }
     
-    b. new Query specific for User is created and used to get the field that is of another Type. We can now query for favorite movies in the front end. 
+      b. new Query specific for User is created and used to get the field that is of another Type. We can now query for favorite movies in the front end. 
 
   4. In the sandbox, we can create a operation to fetch the specific user using
      this syntax
@@ -132,7 +133,7 @@
       }
     }
 
-    a. make sure to include the userId variable in the bottom section of the apollo-server query sandbox 
+      a. make sure to include the userId variable in the bottom section of the apollo-server query sandbox 
 
     e.g 
     {
